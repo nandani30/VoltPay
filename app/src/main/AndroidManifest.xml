@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <application
+        android:name=".VoltPayApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@android:mipmap/sym_def_app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@android:mipmap/sym_def_app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VoltPay"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VoltPay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".ui.payment.SendMoneyActivity" android:exported="false" />
+        <activity android:name=".ui.payment.PaymentProcessingActivity" android:exported="false" />
+        <activity android:name=".ui.home.HomeActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.OnboardingActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.SIMSetupActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.ProfileSetupActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.PinLengthSetupActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.OTPVerificationActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.SyncOptInActivity" android:exported="false" />
+        <activity android:name=".ui.onboarding.SetupCompleteActivity" android:exported="false" />
+        
+        <activity android:name=".ui.scan.ScanQrActivity" android:exported="false" />
+        <activity android:name=".ui.scan.MyQrActivity" android:exported="false" />
+        <activity android:name=".ui.payment.PaymentSuccessActivity" android:exported="false" />
+        <activity android:name=".ui.payment.PaymentFailureActivity" android:exported="false" />
+        <activity android:name=".ui.balance.BalanceActivity" android:exported="false" />
+        <activity android:name=".ui.history.TransactionDetailActivity" android:exported="false" />
+        <activity android:name=".ui.request.RequestActivity" android:exported="false" />
+        <activity android:name=".ui.request.IncomingRequestActivity" android:exported="false" />
+        <activity android:name=".ui.contacts.ContactsActivity" android:exported="false" />
+        <activity android:name=".ui.contacts.AddEditContactActivity" android:exported="false" />
+        <activity android:name=".ui.contacts.SaveContactPromptActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.history.HistoryActivity" android:exported="false" />
+        <activity android:name=".ui.analytics.AnalyticsActivity" android:exported="false" />
+        <activity android:name=".ui.settings.SettingsActivity" android:exported="false" />
+
+        <!-- Accessibility Service -->
+        <service
+            android:name=".service.VoltPayAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config"/>
+        </service>
+
+        <!-- Sync Service -->
+        <service android:name=".service.SyncService" android:exported="false" android:foregroundServiceType="dataSync"/>
+
+        <!-- FCM Service -->
+        <service android:name=".service.FcmService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <!-- Boot Receiver -->
+        <receiver android:name=".service.BootReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- FileProvider for Sharing Images -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+</manifest>
