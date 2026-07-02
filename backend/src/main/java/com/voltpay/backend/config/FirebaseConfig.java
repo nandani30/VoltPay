@@ -20,9 +20,16 @@ public class FirebaseConfig {
         try {
             InputStream serviceAccount = null;
             if (System.getenv("GOOGLE_APPLICATION_CREDENTIALS") == null) {
-                File file = new File("firebase-credentials.json");
-                if (file.exists()) {
-                    serviceAccount = new FileInputStream(file);
+                File localFile = new File("firebase-credentials.json");
+                File renderSecretFile = new File("/etc/secrets/firebase-credentials.json");
+                File renderSecretRoot = new File("/firebase-credentials.json");
+                
+                if (localFile.exists()) {
+                    serviceAccount = new FileInputStream(localFile);
+                } else if (renderSecretFile.exists()) {
+                    serviceAccount = new FileInputStream(renderSecretFile);
+                } else if (renderSecretRoot.exists()) {
+                    serviceAccount = new FileInputStream(renderSecretRoot);
                 }
             }
 
