@@ -18,15 +18,31 @@ public class FirebaseConfig {
     @PostConstruct
     public void init() {
         try {
+            InputStream serviceAccount = null;
+            if (System.getenv("GOOGLE_APPLICATION_CREDENTIALS") == null) {
+                File file = new File("firebase-credentials.json");
+                if (file.exists()) {
+                    serviceAccount = new FileInputStream(file);
+                }
+            }
+
+            GoogleCredentials credentials;
+            if (serviceAccount != null) {
+                credentials = GoogleCredentials.fromStream(serviceAccount);
+            } else {
+                credentials = GoogleCredentials.getApplicationDefault();
+            }
+
             FirebaseOptions options = FirebaseOptions.builder()
-                    .setCredentials(GoogleCredentials.getApplicationDefault())
+                    .setCredentials(credentials)
                     .build();
 
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
+                System.out.println("Firebase Admin SDK initialized.");
             }
         } catch (IOException e) {
-            System.err.println("Firebase credentials not found (GOOGLE_APPLICATION_CREDENTIALS). Push notifications disabled.");
+            System.err.println("Firebase credentials not found. Phone Auth and FCM disabled. Error: " + e.getMessage());
         }
     }
 }

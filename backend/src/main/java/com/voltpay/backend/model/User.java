@@ -18,10 +18,6 @@ public class User {
     // Auth fields
     private String authToken;
     private Instant tokenExpiry;
-    
-    // OTP fields for verification
-    private String currentOtp;
-    private Instant otpExpiry;
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -49,10 +45,4 @@ public class User {
 
     public Instant getTokenExpiry() { return tokenExpiry; }
     public void setTokenExpiry(Instant tokenExpiry) { this.tokenExpiry = tokenExpiry; }
-
-    public String getCurrentOtp() { return currentOtp; }
-    public void setCurrentOtp(String currentOtp) { this.currentOtp = currentOtp; }
-
-    public Instant getOtpExpiry() { return otpExpiry; }
-    public void setOtpExpiry(Instant otpExpiry) { this.otpExpiry = otpExpiry; }
 }

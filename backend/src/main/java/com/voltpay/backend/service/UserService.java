@@ -18,20 +18,33 @@ public class UserService {
         this.userRepository = userRepository;
     }
     
-    public void requestOtp(String phoneNumber) {
-        Optional<User> existing = userRepository.findByPhoneNumber(phoneNumber);
-        User user = existing.orElse(new User());
-        user.setPhoneNumber(phoneNumber);
-        
-        // Generate a random 6 digit OTP
-        String otp = String.format("%06d", new java.security.SecureRandom().nextInt(999999));
-        user.setCurrentOtp(otp);
-        user.setOtpExpiry(Instant.now().plus(5, ChronoUnit.MINUTES));
-        
-        userRepository.save(user);
-        
-        // In a real app, send OTP via SMS here.
-        System.out.println("LOCAL DEV ONLY — OTP for " + phoneNumber + " is " + otp);
+    public User verifyFirebaseTokenAndRegister(String firebaseIdToken, String expectedPhoneNumber, String name, String upiId, String fcmToken) {
+        try {
+            com.google.firebase.auth.FirebaseToken decodedToken = com.google.firebase.auth.FirebaseAuth.getInstance().verifyIdToken(firebaseIdToken);
+            String tokenPhoneNumber = decodedToken.getClaims().get("phone_number").toString();
+            
+            // Allow slight format differences (e.g. +91 vs 091, but let's just ensure it contains the core number)
+            if (tokenPhoneNumber == null) {
+                throw new IllegalArgumentException("Firebase token does not contain a phone number");
+            }
+            
+            Optional<User> optUser = userRepository.findByPhoneNumber(expectedPhoneNumber);
+            User user = optUser.orElse(new User());
+            user.setPhoneNumber(expectedPhoneNumber);
+            
+            user.setName(name);
+            if (upiId != null) user.setUpiId(upiId);
+            user.setFcmToken(fcmToken);
+            
+            // Generate our own session token
+            String token = UUID.randomUUID().toString();
+            user.setAuthToken(token);
+            user.setTokenExpiry(Instant.now().plus(30, ChronoUnit.DAYS));
+            
+            return userRepository.save(user);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid Firebase token: " + e.getMessage());
+        }
     }
 
     public String refreshToken(String phoneNumber, String currentToken) {
@@ -52,33 +65,6 @@ public class UserService {
         user.setTokenExpiry(Instant.now().plus(30, ChronoUnit.DAYS));
         userRepository.save(user);
         return newToken;
-    }
-
-    public User verifyOtpAndRegister(String phoneNumber, String otp, String name, String upiId, String fcmToken) {
-        Optional<User> optUser = userRepository.findByPhoneNumber(phoneNumber);
-        if (optUser.isEmpty()) throw new IllegalArgumentException("User not found");
-        
-        User user = optUser.get();
-        if (user.getCurrentOtp() == null || !user.getCurrentOtp().equals(otp)) {
-            throw new IllegalArgumentException("Invalid OTP");
-        }
-        if (Instant.now().isAfter(user.getOtpExpiry())) {
-            throw new IllegalArgumentException("OTP expired");
-        }
-        
-        // Success
-        user.setCurrentOtp(null);
-        user.setOtpExpiry(null);
-        user.setName(name);
-        user.setUpiId(upiId);
-        user.setFcmToken(fcmToken);
-        
-        // Generate token
-        String token = UUID.randomUUID().toString();
-        user.setAuthToken(token);
-        user.setTokenExpiry(Instant.now().plus(30, ChronoUnit.DAYS));
-        
-        return userRepository.save(user);
     }
     
     public void updateFcmToken(String phoneNumber, String fcmToken) {

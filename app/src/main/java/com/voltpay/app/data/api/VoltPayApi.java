@@ -13,11 +13,8 @@ import retrofit2.http.Path;
 
 public interface VoltPayApi {
 
-    @POST("api/users/request-otp")
-    Call<java.util.Map<String, Object>> requestOtp(@Body java.util.Map<String, String> body);
-
-    @POST("api/users/verify-otp")
-    Call<java.util.Map<String, Object>> verifyOtpAndRegister(@Body java.util.Map<String, String> body);
+    @POST("api/users/verify-firebase-token")
+    Call<java.util.Map<String, Object>> verifyFirebaseTokenAndRegister(@Body java.util.Map<String, String> body);
 
     @PUT("api/contacts/sync")
     Call<ContactSyncResponse> syncContacts(

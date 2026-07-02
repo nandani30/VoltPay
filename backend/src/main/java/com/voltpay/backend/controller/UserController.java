@@ -17,16 +17,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/request-otp")
-    public ResponseEntity<?> requestOtp(@RequestBody PhoneDto dto) {
-        userService.requestOtp(dto.getPhoneNumber());
-        return ResponseEntity.ok(Map.of("success", true, "message", "OTP sent to your number"));
-    }
-
-    @PostMapping("/verify-otp")
-    public ResponseEntity<?> verifyOtpAndRegister(@RequestBody RegisterDto dto) {
+    @PostMapping("/verify-firebase-token")
+    public ResponseEntity<?> verifyFirebaseTokenAndRegister(@RequestBody RegisterDto dto) {
         try {
-            User user = userService.verifyOtpAndRegister(dto.getPhoneNumber(), dto.getOtp(), dto.getName(), dto.getUpiId(), dto.getFcmToken());
+            User user = userService.verifyFirebaseTokenAndRegister(dto.getFirebaseIdToken(), dto.getPhoneNumber(), dto.getName(), dto.getUpiId(), dto.getFcmToken());
             return ResponseEntity.ok(Map.of(
                 "success", true, 
                 "userId", user.getId(),
@@ -65,7 +59,7 @@ public class UserController {
 
     static class RegisterDto {
         private String phoneNumber;
-        private String otp;
+        private String firebaseIdToken;
         private String name;
         private String upiId;
         private String fcmToken;
@@ -73,8 +67,8 @@ public class UserController {
         public String getPhoneNumber() { return phoneNumber; }
         public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
         
-        public String getOtp() { return otp; }
-        public void setOtp(String otp) { this.otp = otp; }
+        public String getFirebaseIdToken() { return firebaseIdToken; }
+        public void setFirebaseIdToken(String firebaseIdToken) { this.firebaseIdToken = firebaseIdToken; }
         
         public String getName() { return name; }
         public void setName(String name) { this.name = name; }
