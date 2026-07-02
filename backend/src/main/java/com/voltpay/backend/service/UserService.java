@@ -21,11 +21,19 @@ public class UserService {
     public User verifyFirebaseTokenAndRegister(String firebaseIdToken, String expectedPhoneNumber, String name, String upiId, String fcmToken) {
         try {
             com.google.firebase.auth.FirebaseToken decodedToken = com.google.firebase.auth.FirebaseAuth.getInstance().verifyIdToken(firebaseIdToken);
-            String tokenPhoneNumber = decodedToken.getClaims().get("phone_number").toString();
+            Object phoneClaim = decodedToken.getClaims().get("phone_number");
             
-            // Allow slight format differences (e.g. +91 vs 091, but let's just ensure it contains the core number)
-            if (tokenPhoneNumber == null) {
+            if (phoneClaim == null) {
                 throw new IllegalArgumentException("Firebase token does not contain a phone number");
+            }
+            String tokenPhoneNumber = phoneClaim.toString();
+            
+            // Security: Enforce that the verified number matches the requested number (allowing for + prefix differences)
+            String normalizedTokenPhone = tokenPhoneNumber.replaceAll("\\D", "");
+            String normalizedExpectedPhone = expectedPhoneNumber.replaceAll("\\D", "");
+            
+            if (!normalizedTokenPhone.endsWith(normalizedExpectedPhone) && !normalizedExpectedPhone.endsWith(normalizedTokenPhone)) {
+                throw new IllegalArgumentException("Verified phone number does not match requested account");
             }
             
             Optional<User> optUser = userRepository.findByPhoneNumber(expectedPhoneNumber);
