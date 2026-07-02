@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/voltpay
+      - FIREBASE_CREDENTIALS_PATH=/app/firebase-credentials.json
+    volumes:
+      - ./firebase-credentials.json:/app/firebase-credentials.json
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+volumes:
+  mongo_data:
