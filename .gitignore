@@ -1,0 +1,46 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Captures
+captures/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Play Services
+google-services.json
+
+# Build outputs
+*.apk
+*.aab
+*.ap_
+*.aab
+
+# Logs
+*.log
+*.hprof
+
+# Backend
+backend/target/
+backend/firebase-credentials.json
+backend/.idea/
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# IDE and Build
+.vscode/
+app/.gradle/
+app/.idea/

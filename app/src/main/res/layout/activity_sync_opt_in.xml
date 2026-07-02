@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@android:drawable/ic_popup_sync"
+        android:layout_marginBottom="24dp"
+        android:tint="#2ED573"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cloud Sync &amp; Backup"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Securely backup your contacts and settings to the cloud. We use end-to-end encryption to keep your data safe."
+        android:textSize="16sp"
+        android:textColor="#757575"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnOptIn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Enable Sync"
+        android:textSize="16sp"
+        android:backgroundTint="#2ED573"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Skip for now"
+        android:textSize="16sp"
+        android:textColor="#2ED573"
+        style="?android:attr/borderlessButtonStyle"/>
+</LinearLayout>

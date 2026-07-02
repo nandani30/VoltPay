@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VoltPay</string>
+    <string name="accessibility_service_description">This service is required by VoltPay to securely process offline transactions without an internet connection. It automates background network communication.</string>
+    <string name="accessibility_description">VoltPay uses this service to securely automate USSD (*99#) payments in the background so you don\'t have to manually type UPI IDs and PINs in carrier dialogs.</string>
+</resources>

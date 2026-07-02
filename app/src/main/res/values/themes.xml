@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VoltPay" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimaryContainer">@color/colorPrimaryVariant</item>
+        
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#2ED573</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">#0D0D0D</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Background -->
+        <item name="android:windowBackground">#0D0D0D</item>
+        <item name="colorSurface">#1A1A1A</item>
+        <item name="android:colorBackground">#0D0D0D</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+    </style>
+</resources>
