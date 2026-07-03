@@ -85,7 +85,7 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:inputType="phone"
-            android:hint="Phone number (e.g. +91...)"
+            android:hint="Phone number (e.g. 9876543210)"
             android:textColorHint="#333333"
             android:paddingBottom="8dp" />
             

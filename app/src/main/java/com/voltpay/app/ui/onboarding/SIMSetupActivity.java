@@ -52,8 +52,11 @@ public class SIMSetupActivity extends AppCompatActivity {
             if (selectedSimSubscriptionId != -1) {
                 if (llManualPhone.getVisibility() == View.VISIBLE) {
                     String manualPhone = etManualPhone.getText().toString().trim();
-                    if (manualPhone.length() < 10 || !manualPhone.startsWith("+")) {
-                        etManualPhone.setError("Enter valid phone with country code (e.g. +91...)");
+                    if (!manualPhone.startsWith("+")) {
+                        manualPhone = "+91" + manualPhone;
+                    }
+                    if (manualPhone.length() < 13) {
+                        etManualPhone.setError("Enter a valid 10-digit Indian phone number");
                         return;
                     }
                     selectedPhoneNumber = manualPhone;
