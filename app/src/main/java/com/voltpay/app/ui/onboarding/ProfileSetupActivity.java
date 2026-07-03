@@ -24,17 +24,38 @@ public class ProfileSetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_setup);
 
         EditText etName = findViewById(R.id.etName);
+        EditText etPhone = findViewById(R.id.etPhone);
         Button btnContinue = findViewById(R.id.btnContinue);
+
+        try {
+            MasterKey masterKey = new MasterKey.Builder(this)
+                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                    .build();
+            SharedPreferences prefs = EncryptedSharedPreferences.create(
+                    this, "voltpay_secure_prefs", masterKey,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+            String savedPhone = prefs.getString("user_phone_number", "");
+            if (savedPhone != null && !savedPhone.isEmpty()) {
+                etPhone.setText(savedPhone);
+            }
+        } catch (Exception ignored) {}
 
         btnContinue.setOnClickListener(v -> {
             String name = etName.getText() != null ? etName.getText().toString().trim() : "";
+            String phone = etPhone.getText() != null ? etPhone.getText().toString().trim() : "";
 
             if (name.length() < 2) {
                 etName.setError("Name must be at least 2 characters");
                 return;
             }
+            if (phone.length() < 10 || !phone.startsWith("+")) {
+                etPhone.setError("Enter valid phone with country code (e.g. +91...)");
+                return;
+            }
 
-            saveProfile(name);
+            saveProfile(name, phone);
         });
     }
 
@@ -43,7 +64,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    private void saveProfile(String name) {
+    private void saveProfile(String name, String phone) {
         try {
             MasterKey masterKey = new MasterKey.Builder(this)
                     .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
@@ -59,6 +80,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
             sharedPreferences.edit()
                     .putString("user_name", name)
+                    .putString("user_phone_number", phone)
                     .apply();
             
             // Navigate to Pin Length Setup next
