@@ -32,6 +32,8 @@ public class SIMSetupActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 101;
     
     private View tvJioWarning;
+    private View llManualPhone;
+    private android.widget.EditText etManualPhone;
     private Button btnContinue;
     private int selectedSimSubscriptionId = -1;
     private String selectedPhoneNumber = "";
@@ -42,10 +44,21 @@ public class SIMSetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sim_setup);
 
         tvJioWarning = findViewById(R.id.tvJioWarning);
+        llManualPhone = findViewById(R.id.llManualPhone);
+        etManualPhone = findViewById(R.id.etManualPhone);
         btnContinue = findViewById(R.id.btnContinue);
 
         btnContinue.setOnClickListener(v -> {
             if (selectedSimSubscriptionId != -1) {
+                if (llManualPhone.getVisibility() == View.VISIBLE) {
+                    String manualPhone = etManualPhone.getText().toString().trim();
+                    if (manualPhone.length() < 10 || !manualPhone.startsWith("+")) {
+                        etManualPhone.setError("Enter valid phone with country code (e.g. +91...)");
+                        return;
+                    }
+                    selectedPhoneNumber = manualPhone;
+                }
+                
                 saveSelectedSim(selectedSimSubscriptionId, selectedPhoneNumber);
                 
                 boolean isSettingsMode = getIntent().getBooleanExtra("from_settings", false);
@@ -137,6 +150,13 @@ public class SIMSetupActivity extends AppCompatActivity {
                     selectedSimSubscriptionId = sim.subscriptionId;
                     selectedPhoneNumber = sim.phoneNumber != null ? sim.phoneNumber : "";
                     btnContinue.setEnabled(true);
+                    
+                    if (selectedPhoneNumber.isEmpty()) {
+                        llManualPhone.setVisibility(View.VISIBLE);
+                    } else {
+                        llManualPhone.setVisibility(View.GONE);
+                    }
+                    
                     if (sim.isJio) {
                         tvJioWarning.setVisibility(View.VISIBLE);
                     } else {

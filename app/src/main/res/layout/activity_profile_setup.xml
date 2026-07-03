@@ -83,24 +83,6 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="#2ED573" />
-
-        <EditText
-            android:id="@+id/etPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:inputType="phone"
-            android:layout_marginTop="24dp"
-            android:hint="Phone number (e.g. +919876543210)"
-            android:textColorHint="#333333"
-            android:paddingBottom="8dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#333333" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
