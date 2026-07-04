@@ -2,8 +2,8 @@ name: Keep Render Server Awake
 
 on:
   schedule:
-    # Runs every 14 minutes
-    - cron: "*/14 * * * *"
+    # Runs every 5 minutes (GitHub often delays cron jobs, so 14 mins is too close to Render's 15 min sleep limit)
+    - cron: "*/5 * * * *"
   workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
 
 jobs:
