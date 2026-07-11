@@ -44,6 +44,9 @@ class AnalyticsActivity : AppCompatActivity() {
     private lateinit var tvMonthLargest: TextView
     private lateinit var tvMonthAverage: TextView
     
+    private lateinit var tvTotalSpent: TextView
+    private lateinit var tvTotalReceived: TextView
+
     private lateinit var barChart: BarChart
     private lateinit var pieChart: PieChart
     private lateinit var lineChart: LineChart
@@ -61,6 +64,9 @@ class AnalyticsActivity : AppCompatActivity() {
         pbLoading = findViewById(R.id.pbLoading)
         svContent = findViewById(R.id.svContent)
 
+        tvTotalSpent = findViewById(R.id.tvTotalSpent)
+        tvTotalReceived = findViewById(R.id.tvTotalReceived)
+        
         tvWeekSpent = findViewById(R.id.tvWeekSpent)
         tvWeekReceived = findViewById(R.id.tvWeekReceived)
         tvWeekTxCount = findViewById(R.id.tvWeekTxCount)
@@ -117,6 +123,10 @@ class AnalyticsActivity : AppCompatActivity() {
                 mCal.set(Calendar.SECOND, 0)
                 val startMonth = mCal.timeInMillis
 
+                // Fetch Totals
+                val totalSpent = dao.getTotalAmountByType("DEBIT", 0, System.currentTimeMillis())
+                val totalReceived = dao.getTotalAmountByType("CREDIT", 0, System.currentTimeMillis())
+
                 // Fetch Week Stats
                 val weekTxs = dao.getByDateRange(startWeek, endWeek)
                 val weekSpent = dao.getTotalAmountByType("DEBIT", startWeek, endWeek)
@@ -144,6 +154,9 @@ class AnalyticsActivity : AppCompatActivity() {
 
                 handler.post {
                     // Update UI
+                    tvTotalSpent.text = String.format(Locale.getDefault(), "₹%.2f", totalSpent)
+                    tvTotalReceived.text = String.format(Locale.getDefault(), "₹%.2f", totalReceived)
+
                     tvWeekSpent.text = String.format(Locale.getDefault(), "₹%.2f", weekSpent)
                     tvWeekReceived.text = String.format(Locale.getDefault(), "₹%.2f", weekReceived)
                     tvWeekTxCount.text = "$weekCount transactions this week"
