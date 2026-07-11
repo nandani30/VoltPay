@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.NestedScrollView
+import android.widget.ScrollView
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
@@ -35,7 +35,7 @@ import java.util.concurrent.Executors
 class AnalyticsActivity : AppCompatActivity() {
 
     private lateinit var pbLoading: ProgressBar
-    private lateinit var svContent: NestedScrollView
+    private lateinit var svContent: ScrollView
     private lateinit var tvWeekSpent: TextView
     private lateinit var tvWeekReceived: TextView
     private lateinit var tvWeekTxCount: TextView
