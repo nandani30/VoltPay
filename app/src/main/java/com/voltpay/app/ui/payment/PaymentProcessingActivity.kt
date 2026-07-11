@@ -39,8 +39,6 @@ class PaymentProcessingActivity : AppCompatActivity() {
         recipientUpi = intent.getStringExtra("EXTRA_UPI_ID")
         originalAmount = intent.getDoubleExtra("EXTRA_AMOUNT", 0.0)
 
-        findViewById<TextView>(R.id.tvStatus)?.text = "Connecting to bank via Engine..."
-
         findViewById<Button>(R.id.btnCancelPayment)?.setOnClickListener {
             cancelPayment(originalAmount, recipientUpi)
         }

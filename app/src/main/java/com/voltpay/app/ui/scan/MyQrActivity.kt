@@ -64,7 +64,7 @@ class MyQrActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        findViewById<TextView>(R.id.tvUserName)?.text = myName
+        findViewById<TextView>(R.id.tvName)?.text = myName
         findViewById<TextView>(R.id.tvUpiId)?.text = myUpiId
 
         val qrContent = "upi://pay?pa=$myUpiId&pn=$myName"

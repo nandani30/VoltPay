@@ -60,8 +60,6 @@ class OTPVerificationActivity : AppCompatActivity() {
         btnVerify = findViewById(R.id.btnVerify)
         etOtp = findViewById(R.id.etOtp)
         
-        findViewById<ImageView>(R.id.btnBack)?.setOnClickListener { finish() }
-
         // Mock sending OTP
         Toast.makeText(this, "Mock OTP sent! Enter any 6 digits.", Toast.LENGTH_SHORT).show()
 

@@ -28,7 +28,6 @@ class PaymentFailureActivity : AppCompatActivity() {
 
         val tvErrorMessage = findViewById<TextView>(R.id.tvErrorMessage)
         val tvAmount = findViewById<TextView>(R.id.tvAmount)
-        val tvCounterparty = findViewById<TextView>(R.id.tvCounterparty)
         val tvCounterpartyUpi = findViewById<TextView>(R.id.tvCounterpartyUpi)
         val btnTryAgain = findViewById<Button>(R.id.btnTryAgain)
         val btnHome = findViewById<Button>(R.id.btnHome)
@@ -44,10 +43,8 @@ class PaymentFailureActivity : AppCompatActivity() {
         }
 
         if (!recipientUpiId.isNullOrEmpty() && recipientUpiId != "Unknown") {
-            tvCounterparty.text = recipientUpiId
             tvCounterpartyUpi.text = recipientUpiId
         } else {
-            tvCounterparty.visibility = View.GONE
             tvCounterpartyUpi.visibility = View.GONE
         }
 

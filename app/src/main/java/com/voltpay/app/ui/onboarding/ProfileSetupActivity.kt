@@ -32,6 +32,7 @@ class ProfileSetupActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         moveTaskToBack(true)
     }
 

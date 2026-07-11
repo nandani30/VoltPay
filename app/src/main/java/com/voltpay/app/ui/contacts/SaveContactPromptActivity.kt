@@ -38,8 +38,6 @@ class SaveContactPromptActivity : AppCompatActivity() {
         
         val view = LayoutInflater.from(this).inflate(R.layout.activity_add_edit_contact, null)
         
-        view.findViewById<View>(R.id.topBar).visibility = View.GONE
-        
         val etName = view.findViewById<EditText>(R.id.etName)
         val etUpiId = view.findViewById<EditText>(R.id.etUpiId)
         val etPhone = view.findViewById<EditText>(R.id.etPhone)
