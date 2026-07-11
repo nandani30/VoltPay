@@ -43,7 +43,6 @@
         <activity android:name=".ui.onboarding.SIMSetupActivity" android:exported="false" />
         <activity android:name=".ui.onboarding.ProfileSetupActivity" android:exported="false" />
         <activity android:name=".ui.onboarding.PinLengthSetupActivity" android:exported="false" />
-        <activity android:name=".ui.onboarding.OTPVerificationActivity" android:exported="false" />
         <activity android:name=".ui.onboarding.SyncOptInActivity" android:exported="false" />
         <activity android:name=".ui.onboarding.SetupCompleteActivity" android:exported="false" />
         
@@ -64,7 +63,7 @@
 
         <!-- Accessibility Service -->
         <service
-            android:name=".service.VoltPayAccessibilityService"
+            android:name=".engine.UssdAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="true">
             <intent-filter>
@@ -78,12 +77,6 @@
         <!-- Sync Service -->
         <service android:name=".service.SyncService" android:exported="false" android:foregroundServiceType="dataSync"/>
 
-        <!-- FCM Service -->
-        <service android:name=".service.FcmService" android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
 
         <!-- Boot Receiver -->
         <receiver android:name=".service.BootReceiver" android:exported="false">

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0D0D0D"
+    android:background="@drawable/bg_app_gradient"
     android:fitsSystemWindows="true">
 
     <!-- Header -->
@@ -19,11 +19,12 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
             android:src="@drawable/ic_back"
             android:rotation="180"
-            android:tint="#FFFFFF"
+            android:tint="@color/textPrimary"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <TextView
@@ -31,16 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Contact"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/textPrimary"
             android:layout_marginStart="16dp" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#2A2A2A" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,60 +49,61 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="24dp"
-            android:paddingTop="28dp">
+            android:paddingTop="32dp">
 
             <!-- Name Field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NAME"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
                 android:textAllCaps="true"
-                android:letterSpacing="0.05" />
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp" />
 
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@null"
-                android:textColor="#FFFFFF"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_glass_input"
+                android:textColor="@color/textPrimary"
                 android:textSize="16sp"
                 android:hint="Full name"
-                android:textColorHint="#555555"
+                android:textColorHint="@color/textTertiary"
+                android:paddingHorizontal="16dp"
                 android:inputType="textPersonName" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#333333"
-                android:layout_marginBottom="28dp" />
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="24dp" />
 
             <!-- UPI ID Field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UPI ID"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
-                android:textAllCaps="true" />
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp" />
 
             <EditText
                 android:id="@+id/etUpiId"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@null"
-                android:textColor="#FFFFFF"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_glass_input"
+                android:textColor="@color/textPrimary"
                 android:textSize="16sp"
                 android:hint="name@bankhandle"
-                android:textColorHint="#555555"
+                android:textColorHint="@color/textTertiary"
+                android:paddingHorizontal="16dp"
                 android:inputType="textEmailAddress" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#333333"
-                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@+id/tvUpiError"
@@ -114,78 +111,77 @@
                 android:layout_height="wrap_content"
                 android:text="Invalid UPI ID format"
                 android:textSize="12sp"
-                android:textColor="#FF4444"
+                android:textColor="@color/colorError"
                 android:visibility="gone"
-                android:layout_marginBottom="28dp" />
+                android:layout_marginTop="8dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="24dp" />
 
             <!-- Phone Field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PHONE (OPTIONAL)"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
-                android:textAllCaps="true" />
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp" />
 
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@null"
-                android:textColor="#FFFFFF"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_glass_input"
+                android:textColor="@color/textPrimary"
                 android:textSize="16sp"
                 android:hint="For your reference"
-                android:textColorHint="#555555"
+                android:textColorHint="@color/textTertiary"
+                android:paddingHorizontal="16dp"
                 android:inputType="phone" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#333333"
-                android:layout_marginBottom="28dp" />
 
         </LinearLayout>
     </ScrollView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#2A2A2A" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="16dp">
+        android:paddingVertical="24dp">
         
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="SAVE CONTACT"
-            android:textSize="16sp"
+            android:layout_height="64dp"
+            android:text="Save Contact"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="#2ED573"
-            app:cornerRadius="0dp"
-            app:elevation="0dp" />
+            android:textColor="@color/colorOnPrimary"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="32dp"
+            app:elevation="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:text="DELETE CONTACT"
-            android:textSize="16sp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="Delete Contact"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorOnPrimary"
             android:visibility="gone"
-            app:backgroundTint="#FF4444"
-            app:cornerRadius="0dp"
-            app:elevation="0dp" />
+            app:backgroundTint="@color/colorError"
+            app:cornerRadius="32dp"
+            app:elevation="8dp" />
     </LinearLayout>
 
 </LinearLayout>

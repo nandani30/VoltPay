@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D"
+    android:background="@drawable/bg_app_gradient"
     android:fitsSystemWindows="true">
 
     <!-- Progress dots (all filled) -->
@@ -19,10 +19,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -36,8 +36,9 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="#2ED573"
-            android:layout_marginBottom="24dp">
+            android:background="@drawable/bg_gradient_primary"
+            android:elevation="8dp"
+            android:layout_marginBottom="32dp">
             
             <TextView
                 android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
                 android:text="✓"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorOnPrimary"
                 android:layout_gravity="center" />
         </FrameLayout>
 
@@ -53,8 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You are all set,"
-            android:textSize="24sp"
-            android:textColor="#A0A0A0"
+            android:textSize="28sp"
+            android:textColor="@color/textSecondary"
             android:gravity="center" />
 
         <TextView
@@ -62,11 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="[Name]!"
-            android:textSize="32sp"
+            android:textSize="36sp"
             android:textStyle="bold"
-            android:textColor="#2ED573"
+            android:textColor="@color/colorPrimary"
             android:gravity="center"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
         <!-- Feature Highlights -->
         <LinearLayout
@@ -74,30 +75,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingHorizontal="24dp"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="48dp">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#1A1A1A"
-                android:padding="12dp"
-                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_glass_card"
+                android:padding="16dp"
+                android:layout_marginHorizontal="8dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/ic_send"
-                    android:tint="#2ED573" />
+                    android:tint="@color/colorPrimary" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Offline Pay"
-                    android:textSize="11sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
                     android:gravity="center"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,23 +107,24 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#1A1A1A"
-                android:padding="12dp"
-                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_glass_card"
+                android:padding="16dp"
+                android:layout_marginHorizontal="8dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/ic_qr_scan"
-                    android:tint="#2ED573" />
+                    android:tint="@color/colorPrimary" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="QR Scan"
-                    android:textSize="11sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
                     android:gravity="center"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -129,23 +132,24 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#1A1A1A"
-                android:padding="12dp"
-                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_glass_card"
+                android:padding="16dp"
+                android:layout_marginHorizontal="8dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/ic_analytics"
-                    android:tint="#2ED573" />
+                    android:tint="@color/colorPrimary" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Analytics"
-                    android:textSize="11sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
                     android:gravity="center"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="12dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -153,17 +157,17 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLetsGo"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="64dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="48dp"
-        android:text="LET'S GO"
-        android:textSize="16sp"
+        android:text="Let's Go"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#2ED573"
-        app:cornerRadius="0dp"
-        app:elevation="0dp"
+        android:textColor="@color/colorOnPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="32dp"
+        app:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

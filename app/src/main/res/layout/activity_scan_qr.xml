@@ -4,86 +4,120 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:fitsSystemWindows="true">
+    android:background="@android:color/black">
 
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:id="@+id/barcodeScanner"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Overlay -->
+    <View
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#66000000" />
+
+    <!-- Clear center area for scanning -->
+    <View
+        android:id="@+id/scanArea"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/bg_glass_input"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Top Overlay -->
+    <!-- Scanner Frame decorations -->
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_back"
+        android:rotation="45"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="@id/scanArea"
+        app:layout_constraintStart_toStartOf="@id/scanArea"
+        android:layout_margin="-16dp" />
+        
+    <!-- Top Bar -->
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingHorizontal="24dp"
         android:paddingTop="48dp"
-        android:paddingBottom="24dp"
         android:gravity="center_vertical"
-        android:background="#66000000"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
             android:src="@drawable/ic_back"
             android:rotation="180"
-            android:tint="#FFFFFF"
+            android:tint="@color/colorOnPrimary"
             android:background="?attr/selectableItemBackgroundBorderless"/>
-
+            
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SCAN QR CODE"
-            android:textSize="14sp"
+            android:text="Scan any QR"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:textAllCaps="true"
-            android:letterSpacing="0.1"
+            android:textColor="@color/colorOnPrimary"
             android:layout_marginStart="16dp" />
+
+        <ImageView
+            android:id="@+id/btnFlash"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_alert"
+            android:tint="@color/colorOnPrimary"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
     </LinearLayout>
 
-    <!-- Bottom Card -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Align QR code within frame to scan"
+        android:textSize="14sp"
+        android:textColor="@color/colorOnPrimary"
+        app:layout_constraintTop_toBottomOf="@id/scanArea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+        
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/btnGallery"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#0D0D0D"
+        android:gravity="center"
+        android:background="@drawable/bg_glass_card"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="24dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        android:paddingVertical="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_contacts"
+            android:tint="@color/colorOnPrimary" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Point camera at any UPI QR code"
-            android:textSize="13sp"
-            android:textColor="#555555"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnImportGallery"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="IMPORT FROM GALLERY"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="#2ED573"
-            app:backgroundTint="#1A1A1A"
-            app:strokeColor="#2ED573"
-            app:strokeWidth="1dp"
-            app:cornerRadius="0dp"
-            app:elevation="0dp" />
+            android:text="Upload from Gallery"
+            android:textSize="12sp"
+            android:textColor="@color/colorOnPrimary"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

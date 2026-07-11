@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0D0D0D"
+    android:background="@drawable/bg_app_gradient"
     android:fitsSystemWindows="true">
 
     <!-- Header -->
@@ -18,27 +18,23 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
             android:src="@drawable/ic_back"
             android:rotation="180"
-            android:tint="#FFFFFF"
+            android:tint="@color/textPrimary"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transaction"
-            android:textSize="20sp"
+            android:text="Transaction Detail"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/textPrimary"
             android:layout_marginStart="16dp" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#2A2A2A" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -59,9 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="₹0.00"
-                android:textSize="52sp"
+                android:textSize="56sp"
                 android:textStyle="bold"
-                android:textColor="#2ED573"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center" />
 
             <TextView
@@ -69,12 +65,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PAYMENT SUCCESSFUL"
-                android:textSize="11sp"
-                android:textColor="#555555"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
                 android:textAllCaps="true"
                 android:letterSpacing="0.1"
                 android:gravity="center"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp" />
 
             <!-- Details Card -->
@@ -82,8 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#1A1A1A"
-                android:padding="20dp">
+                android:background="@drawable/bg_glass_card"
+                android:padding="24dp">
 
                 <!-- Row 1 -->
                 <LinearLayout
@@ -99,16 +96,17 @@
                         android:layout_weight="1"
                         android:text="TO"
                         android:textSize="12sp"
-                        android:textColor="#555555"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
                         android:textAllCaps="true" />
                     <TextView
                         android:id="@+id/tvCounterpartyName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="@color/textPrimary" />
                 </LinearLayout>
 
                 <!-- Row 2 -->
@@ -124,21 +122,22 @@
                         android:layout_weight="1"
                         android:text="UPI ID"
                         android:textSize="12sp"
-                        android:textColor="#555555" />
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary" />
                     <TextView
                         android:id="@+id/tvCounterpartyUpi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="upi@id"
-                        android:textSize="13sp"
-                        android:textColor="#A0A0A0" />
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#2A2A2A"
-                    android:layout_marginVertical="16dp" />
+                    android:background="@color/glassBorder"
+                    android:layout_marginVertical="24dp" />
 
                 <!-- Row 3 -->
                 <LinearLayout
@@ -153,7 +152,8 @@
                         android:layout_weight="1"
                         android:text="REF NO."
                         android:textSize="12sp"
-                        android:textColor="#555555"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
                         android:textAllCaps="true" />
                     <TextView
                         android:id="@+id/tvUpiRef"
@@ -162,13 +162,14 @@
                         android:text="123456789012"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="@color/textPrimary" />
                     <ImageView
                         android:id="@+id/btnCopyRef"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:padding="2dp"
                         android:src="@drawable/ic_copy"
-                        android:tint="#2ED573"
+                        android:tint="@color/colorPrimary"
                         android:layout_marginStart="12dp"
                         android:background="?attr/selectableItemBackgroundBorderless"/>
                 </LinearLayout>
@@ -176,8 +177,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#2A2A2A"
-                    android:layout_marginVertical="16dp" />
+                    android:background="@color/glassBorder"
+                    android:layout_marginBottom="24dp" />
 
                 <!-- Row 4 -->
                 <LinearLayout
@@ -192,22 +193,23 @@
                         android:layout_weight="1"
                         android:text="DATE &amp; TIME"
                         android:textSize="12sp"
-                        android:textColor="#555555"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
                         android:textAllCaps="true" />
                     <TextView
                         android:id="@+id/tvDateTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Date"
-                        android:textSize="13sp"
-                        android:textColor="#A0A0A0" />
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#2A2A2A"
-                    android:layout_marginVertical="16dp" />
+                    android:background="@color/glassBorder"
+                    android:layout_marginBottom="24dp" />
 
                 <!-- Row 5 -->
                 <LinearLayout
@@ -221,17 +223,18 @@
                         android:layout_weight="1"
                         android:text="MODE"
                         android:textSize="12sp"
-                        android:textColor="#555555"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
                         android:textAllCaps="true" />
                     <TextView
                         android:id="@+id/tvSource"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="AUTO"
-                        android:textSize="11sp"
+                        android:textSize="10sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:background="#2ED573"
+                        android:textColor="@color/colorOnPrimary"
+                        android:background="@drawable/bg_gradient_primary"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp" />
                 </LinearLayout>

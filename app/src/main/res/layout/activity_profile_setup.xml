@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D"
+    android:background="@drawable/bg_app_gradient"
     android:fitsSystemWindows="true">
 
     <!-- Progress dots -->
@@ -19,10 +19,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#333333" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#333333" android:layout_marginHorizontal="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@color/glassBorder" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@color/glassBorder" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
     </LinearLayout>
 
     <TextView
@@ -30,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:text="What should"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textPrimary"
         app:layout_constraintTop_toBottomOf="@id/progressDots" />
 
     <TextView
@@ -43,9 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:text="we call you?"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="#2ED573"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <TextView
@@ -53,10 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="This is shown on your QR code and payment requests"
-        android:textSize="14sp"
-        android:textColor="#555555"
+        android:textSize="16sp"
+        android:textColor="@color/textSecondary"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
 
     <LinearLayout
@@ -72,33 +72,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
+            android:textColor="@color/textPrimary"
+            android:textSize="32sp"
             android:textStyle="bold"
             android:hint="Your name"
-            android:textColorHint="#333333"
-            android:paddingBottom="8dp" />
+            android:textColorHint="@color/textTertiary"
+            android:paddingBottom="12dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#2ED573" />
+            android:background="@android:color/transparent" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnContinue"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="64dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="48dp"
-        android:text="CONTINUE"
-        android:textSize="16sp"
+        android:text="Continue"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#2ED573"
-        app:cornerRadius="0dp"
-        app:elevation="0dp"
+        android:textColor="@color/colorOnPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="32dp"
+        app:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

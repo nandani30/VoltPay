@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base dark color -->
+    <item>
+        <shape>
+            <solid android:color="@color/colorBackground"/>
+        </shape>
+    </item>
+    <!-- Top-left glowing orb -->
+    <item
+        android:top="-100dp"
+        android:left="-100dp"
+        android:right="150dp"
+        android:bottom="300dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="300dp"
+                android:startColor="#3366FCF1"
+                android:endColor="#0066FCF1"/>
+        </shape>
+    </item>
+    <!-- Bottom-right glowing orb -->
+    <item
+        android:top="300dp"
+        android:left="150dp"
+        android:right="-100dp"
+        android:bottom="-100dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="400dp"
+                android:startColor="#228A2BE2"
+                android:endColor="#008A2BE2"/>
+        </shape>
+    </item>
+</layer-list>

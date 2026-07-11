@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D"
+    android:background="@drawable/bg_app_gradient"
     android:fitsSystemWindows="true">
 
     <!-- Progress dots -->
@@ -19,10 +19,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#2ED573" android:layout_marginHorizontal="4dp"/>
-        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#333333" android:layout_marginHorizontal="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/bg_gradient_primary" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
+        <View android:layout_width="8dp" android:layout_height="8dp" android:background="@color/glassBorder" android:layout_marginHorizontal="4dp" app:cornerRadius="4dp"/>
     </LinearLayout>
 
     <TextView
@@ -30,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:text="Your UPI PIN"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textPrimary"
         app:layout_constraintTop_toBottomOf="@id/progressDots" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:text="is how many digits?"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#2ED573"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/tvPinTitle" />
 
     <TextView
@@ -53,10 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Check your banking app if unsure. You can change this in Settings later."
-        android:textSize="14sp"
-        android:textColor="#555555"
+        android:textSize="16sp"
+        android:textColor="@color/textSecondary"
         app:layout_constraintTop_toBottomOf="@id/tvPinSubtitle" />
 
     <LinearLayout
@@ -70,10 +70,10 @@
         <LinearLayout
             android:id="@+id/card4Digit"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="#1A1A1A"
+            android:background="@drawable/bg_glass_card"
             android:gravity="center"
             android:layout_marginEnd="8dp"
             android:clickable="true"
@@ -82,26 +82,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4"
-                android:textSize="40sp"
+                android:textSize="48sp"
                 android:textStyle="bold"
-                android:textColor="#2ED573"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DIGITS"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/card6Digit"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="#1A1A1A"
+            android:background="@drawable/bg_glass_card"
             android:gravity="center"
             android:layout_marginStart="8dp"
             android:clickable="true"
@@ -110,16 +111,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6"
-                android:textSize="40sp"
+                android:textSize="48sp"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/textPrimary"
                 android:gravity="center" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DIGITS"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
                 android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
@@ -127,18 +129,18 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnContinue"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="64dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="48dp"
-        android:text="CONTINUE"
-        android:textSize="16sp"
+        android:text="Continue"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorOnPrimary"
         android:enabled="false"
-        app:backgroundTint="#2ED573"
-        app:cornerRadius="0dp"
-        app:elevation="0dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="32dp"
+        app:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

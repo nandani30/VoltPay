@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.VoltPay" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.VoltPay" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorPrimaryContainer">@color/colorPrimaryVariant</item>
         
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#2ED573</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondaryContainer">@color/colorSecondaryVariant</item>
         
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#0D0D0D</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
         
         <!-- Background -->
-        <item name="android:windowBackground">#0D0D0D</item>
-        <item name="colorSurface">#1A1A1A</item>
-        <item name="android:colorBackground">#0D0D0D</item>
-        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+        
+        <!-- Error -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">#FFFFFF</item>
     </style>
 </resources>

@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#1A1A1A"
+    android:background="@drawable/bg_glass_card"
     android:paddingHorizontal="24dp"
     android:paddingBottom="32dp">
 
     <!-- Handle -->
     <View
-        android:layout_width="40dp"
-        android:layout_height="4dp"
-        android:background="#333333"
+        android:layout_width="48dp"
+        android:layout_height="6dp"
+        android:background="@color/glassBorder"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="24dp" />
@@ -21,48 +21,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter your UPI ID"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textPrimary"
         android:layout_marginBottom="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Needed for QR code and payment requests"
-        android:textSize="13sp"
-        android:textColor="#555555"
-        android:layout_marginBottom="28dp" />
+        android:textSize="14sp"
+        android:textColor="@color/textSecondary"
+        android:layout_marginBottom="32dp" />
 
     <EditText
         android:id="@+id/etUpiId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:textColor="#FFFFFF"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_glass_input"
+        android:textColor="@color/textPrimary"
         android:textSize="18sp"
         android:hint="yourname@bankhandle"
-        android:textColorHint="#333333"
-        android:paddingBottom="8dp"
+        android:textColorHint="@color/textTertiary"
+        android:paddingHorizontal="16dp"
         android:inputType="textEmailAddress" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#2ED573"
+        android:background="@android:color/transparent"
         android:layout_marginBottom="32dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSaveUpi"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="SAVE AND CONTINUE"
-        android:textSize="16sp"
+        android:layout_height="64dp"
+        android:text="Save and Continue"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#2ED573"
-        app:cornerRadius="0dp"
-        app:elevation="0dp" />
+        android:textColor="@color/colorOnPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="32dp"
+        app:elevation="8dp" />
 
 </LinearLayout>

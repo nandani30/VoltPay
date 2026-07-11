@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0D0D0D">
+    android:background="@drawable/bg_app_gradient">
 
     <!-- Header -->
     <LinearLayout
@@ -18,11 +18,12 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
             android:src="@drawable/ic_back"
             android:rotation="180"
-            android:tint="#FFFFFF"
+            android:tint="@color/textPrimary"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <TextView
@@ -32,14 +33,9 @@
             android:text="Balance"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/textPrimary"
             android:layout_marginStart="16dp" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#2A2A2A" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,23 +49,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="YOUR BALANCE"
-            android:textSize="11sp"
-            android:textColor="#555555"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/textSecondary"
             android:textAllCaps="true"
-            android:letterSpacing="0.15"
+            android:letterSpacing="0.1"
             android:gravity="center" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="24dp">
             
             <LinearLayout
                 android:id="@+id/llBalanceContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:paddingVertical="32dp"
+                android:background="@drawable/bg_glass_card">
                 
                 <TextView
                     android:id="@+id/tvBalanceAmount"
@@ -78,13 +77,13 @@
                     android:text="₹ --"
                     android:textSize="56sp"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="@color/textPrimary"/>
 
                 <View
                     android:layout_width="80dp"
-                    android:layout_height="2dp"
-                    android:background="#2ED573"
-                    android:layout_marginTop="8dp" />
+                    android:layout_height="4dp"
+                    android:background="@drawable/bg_gradient_primary"
+                    android:layout_marginTop="16dp" />
 
             </LinearLayout>
             
@@ -94,7 +93,7 @@
                 android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:visibility="gone"
-                android:indeterminateTint="#2ED573"/>
+                android:indeterminateTint="@color/colorPrimary"/>
         </FrameLayout>
 
         <!-- Jio Warning -->
@@ -103,21 +102,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#1A1A1A"
+            android:background="@drawable/bg_glass_card"
             android:padding="16dp"
             android:layout_marginTop="24dp"
             android:visibility="gone">
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_alert"
-                android:tint="#2ED573" />
+                android:tint="@color/colorWarning" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Balance check not available on Jio"
-                android:textSize="13sp"
-                android:textColor="#2ED573"
+                android:textSize="14sp"
+                android:textColor="@color/colorWarning"
                 android:layout_marginStart="12dp" />
         </LinearLayout>
 
@@ -128,14 +127,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone"
+            android:background="@drawable/bg_glass_card"
+            android:padding="24dp"
             android:layout_marginTop="24dp">
             
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="WHAT WAS YOUR BALANCE?"
-                android:textSize="11sp"
-                android:textColor="#A0A0A0"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
                 android:textAllCaps="true" />
                 
             <EditText
@@ -144,34 +146,33 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:hint="0.00"
-                android:textColorHint="#333333"
-                android:textColor="#FFFFFF"
-                android:textSize="28sp"
+                android:textColorHint="@color/textTertiary"
+                android:textColor="@color/textPrimary"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 android:background="@null"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="16dp" />
                 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#2ED573" />
+                android:background="@drawable/bg_gradient_primary"
+                android:layout_marginTop="8dp" />
                 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveManualBalance"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="SAVE BALANCE"
+                android:layout_height="56dp"
+                android:text="Save Balance"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                app:backgroundTint="#2ED573"
-                app:cornerRadius="0dp"
-                app:elevation="0dp"
-                android:layout_marginTop="20dp" />
+                android:textColor="@color/colorOnPrimary"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="28dp"
+                app:elevation="8dp"
+                android:layout_marginTop="24dp" />
         </LinearLayout>
     </LinearLayout>
-
-
 
 </LinearLayout>

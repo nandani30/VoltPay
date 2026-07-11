@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_app_gradient"
     android:padding="24dp"
     android:gravity="center">
 
@@ -10,16 +11,16 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@android:drawable/ic_popup_sync"
-        android:layout_marginBottom="24dp"
-        android:tint="#2ED573"/>
+        android:layout_marginBottom="32dp"
+        android:tint="@color/colorPrimary"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cloud Sync &amp; Backup"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#212121"
+        android:textColor="@color/textPrimary"
         android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
@@ -28,26 +29,30 @@
         android:layout_height="wrap_content"
         android:text="Securely backup your contacts and settings to the cloud. We use end-to-end encryption to keep your data safe."
         android:textSize="16sp"
-        android:textColor="#757575"
+        android:textColor="@color/textSecondary"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="48dp"/>
 
     <Button
         android:id="@+id/btnOptIn"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:text="Enable Sync"
-        android:textSize="16sp"
-        android:backgroundTint="#2ED573"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorOnPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnSkip"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:text="Skip for now"
-        android:textSize="16sp"
-        android:textColor="#2ED573"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:backgroundTint="@android:color/transparent"
         style="?android:attr/borderlessButtonStyle"/>
 </LinearLayout>
