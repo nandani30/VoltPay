@@ -204,6 +204,12 @@
 
             </LinearLayout>
 
+            <!-- WEEK CONTENT -->
+            <LinearLayout
+                android:id="@+id/llWeekContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <!-- Chart Section -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -295,6 +301,48 @@
                     android:layout_marginTop="16dp" />
             </LinearLayout>
 
+                <!-- Bar Chart Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A1A1A"
+                    android:padding="20dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LAST 7 DAYS"
+                        android:textSize="11sp"
+                        android:textColor="#555555"
+                        android:textAllCaps="true"
+                        android:layout_marginBottom="16dp" />
+                        
+                    <TextView
+                        android:id="@+id/tvNoBarData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No transactions in last 7 days"
+                        android:textSize="13sp"
+                        android:textColor="#555555"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- MONTH CONTENT -->
+            <LinearLayout
+                android:id="@+id/llMonthContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
                 <!-- This Month Card -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -380,40 +428,6 @@
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
 
-                <!-- Bar Chart Card -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="#1A1A1A"
-                    android:padding="20dp"
-                    android:layout_marginBottom="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LAST 7 DAYS"
-                        android:textSize="11sp"
-                        android:textColor="#555555"
-                        android:textAllCaps="true"
-                        android:layout_marginBottom="16dp" />
-                        
-                    <TextView
-                        android:id="@+id/tvNoBarData"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No transactions in last 7 days"
-                        android:textSize="13sp"
-                        android:textColor="#555555"
-                        android:layout_gravity="center"
-                        android:visibility="gone" />
-
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp" />
-                </LinearLayout>
-
                 <!-- Pie Chart Card -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -481,6 +495,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp" />
                 </LinearLayout>
+            </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

@@ -9,6 +9,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ScrollView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
@@ -83,6 +85,33 @@ class AnalyticsActivity : AppCompatActivity() {
         tvNoBarData = findViewById(R.id.tvNoBarData)
         tvNoPieData = findViewById(R.id.tvNoPieData)
         tvNoLineData = findViewById(R.id.tvNoLineData)
+
+        val chipWeek = findViewById<TextView>(R.id.chipWeek)
+        val chipMonth = findViewById<TextView>(R.id.chipMonth)
+        val llWeekContent = findViewById<LinearLayout>(R.id.llWeekContent)
+        val llMonthContent = findViewById<LinearLayout>(R.id.llMonthContent)
+
+        chipWeek.setOnClickListener {
+            llWeekContent.visibility = View.VISIBLE
+            llMonthContent.visibility = View.GONE
+            
+            chipWeek.setBackgroundResource(R.drawable.bg_gradient_primary)
+            chipWeek.setTextColor(ContextCompat.getColor(this, R.color.colorOnPrimary))
+            
+            chipMonth.setBackgroundResource(R.drawable.bg_glass_card)
+            chipMonth.setTextColor(ContextCompat.getColor(this, R.color.textSecondary))
+        }
+
+        chipMonth.setOnClickListener {
+            llMonthContent.visibility = View.VISIBLE
+            llWeekContent.visibility = View.GONE
+            
+            chipMonth.setBackgroundResource(R.drawable.bg_gradient_primary)
+            chipMonth.setTextColor(ContextCompat.getColor(this, R.color.colorOnPrimary))
+            
+            chipWeek.setBackgroundResource(R.drawable.bg_glass_card)
+            chipWeek.setTextColor(ContextCompat.getColor(this, R.color.textSecondary))
+        }
 
         loadAnalyticsData()
     }
