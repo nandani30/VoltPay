@@ -75,6 +75,15 @@
             android:focusable="true"/>
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:indeterminateTint="@color/colorPrimary" />
+
     <ScrollView
         android:id="@+id/svContent"
         android:layout_width="match_parent"

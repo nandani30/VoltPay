@@ -54,39 +54,31 @@ class BalanceActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
 
         initSecurePrefs()
-        isAutoMode = securePrefs?.getBoolean("pref_auto_mode", true) ?: true
 
-        val jioStatus = checkJioSimStatus()
-        if (jioStatus == 1) { // Only Jio
-            AlertDialog.Builder(this)
-                .setTitle("Jio Network Detected")
-                .setMessage("Your Jio SIM doesn't support *99# offline balance checks.")
-                .setPositiveButton("OK") { _, _ -> finish() }
-                .setCancelable(false)
-                .show()
-        } else if (jioStatus == 2) { // Dual SIM
-            AlertDialog.Builder(this)
-                .setTitle("Jio Network Detected")
-                .setMessage("Your Jio SIM doesn't support *99#. Switch to your other SIM and try again.")
-                .setPositiveButton("Proceed Anyway") { _, _ -> startBalanceCheck() }
-                .setNegativeButton("Cancel") { _, _ -> finish() }
-                .setCancelable(false)
-                .show()
+        val lastBalance = securePrefs?.getFloat("last_balance", -1f) ?: -1f
+        if (lastBalance >= 0f) {
+            saveBalanceAndRefreshUI(lastBalance.toDouble())
         } else {
-            startBalanceCheck()
+            saveBalanceAndRefreshUI(0.0)
+            checkAndStartBalanceCheck()
+        }
+        
+        // Let tapping the balance card refresh it
+        llBalanceContent.setOnClickListener {
+            checkAndStartBalanceCheck()
         }
 
-        findViewById<View>(R.id.btnSaveManualBalance).setOnClickListener {
-            val etManual = findViewById<EditText>(R.id.etManualBalance)
-            val valStr = etManual.text.toString()
-            if (valStr.isNotEmpty()) {
-                try {
-                    saveBalanceAndRefreshUI(valStr.toDouble())
-                    llManualInput.visibility = View.GONE
-                    Toast.makeText(this, "Balance saved", Toast.LENGTH_SHORT).show()
-                } catch (e: Exception) {
-                }
-            }
+        // Manual save is removed since we just show balance
+    }
+    
+    private fun checkAndStartBalanceCheck() {
+        val jioStatus = checkJioSimStatus()
+        if (jioStatus == 1) {
+            Toast.makeText(this, "Jio network doesn't support *99# offline checks.", Toast.LENGTH_SHORT).show()
+        } else if (jioStatus == 2) {
+            Toast.makeText(this, "Switch away from Jio to check balance.", Toast.LENGTH_SHORT).show()
+        } else {
+            startBalanceCheck()
         }
     }
 
@@ -121,13 +113,11 @@ class BalanceActivity : AppCompatActivity() {
     }
 
     private fun startBalanceCheck() {
-        llBalanceContent.visibility = View.INVISIBLE
         pbLoading.visibility = View.VISIBLE
         llManualInput.visibility = View.GONE
 
         if (!AccessibilityUtils.isAccessibilityServiceEnabled(this)) {
             pbLoading.visibility = View.GONE
-            llManualInput.visibility = View.VISIBLE
             AccessibilityUtils.promptToEnableAccessibility(this)
             return
         }
@@ -140,7 +130,6 @@ class BalanceActivity : AppCompatActivity() {
         } else {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 pbLoading.visibility = View.GONE
-                llManualInput.visibility = View.VISIBLE
                 Toast.makeText(this, "Phone call permission is required to check balance automatically.", Toast.LENGTH_LONG).show()
                 return
             }
@@ -154,7 +143,6 @@ class BalanceActivity : AppCompatActivity() {
                             saveBalanceAndRefreshUI(bal)
                         } catch (e: Exception) {
                             pbLoading.visibility = View.GONE
-                            llManualInput.visibility = View.VISIBLE
                             Toast.makeText(this@BalanceActivity, "Could not parse balance from: $message", Toast.LENGTH_LONG).show()
                         }
                     }
@@ -164,7 +152,6 @@ class BalanceActivity : AppCompatActivity() {
                     runOnUiThread {
                         if (pbLoading.visibility == View.VISIBLE) {
                             pbLoading.visibility = View.GONE
-                            llManualInput.visibility = View.VISIBLE
                             Toast.makeText(this@BalanceActivity, "Error: $error", Toast.LENGTH_LONG).show()
                         }
                     }
@@ -179,7 +166,6 @@ class BalanceActivity : AppCompatActivity() {
             waitingForManualReturn = false
             pbLoading.visibility = View.GONE
             llBalanceContent.visibility = View.VISIBLE
-            llManualInput.visibility = View.VISIBLE
         }
     }
 
